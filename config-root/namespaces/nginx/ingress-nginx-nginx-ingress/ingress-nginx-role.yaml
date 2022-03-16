@@ -3,18 +3,19 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   labels:
-    helm.sh/chart: ingress-nginx-3.12.0
+    helm.sh/chart: ingress-nginx-4.0.18
     app.kubernetes.io/name: ingress-nginx
     app.kubernetes.io/instance: nginx-ingress
-    app.kubernetes.io/version: "0.41.2"
+    app.kubernetes.io/version: "1.1.2"
+    app.kubernetes.io/part-of: ingress-nginx
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: controller
     gitops.jenkins-x.io/pipeline: 'namespaces'
   name: ingress-nginx
+  namespace: nginx
   annotations:
     meta.helm.sh/release-name: 'nginx-ingress'
     kapp.k14s.io/change-group: 'apps.jenkins-x.io/ingress-nginx'
-  namespace: nginx
 rules:
   - apiGroups:
       - ""
@@ -40,11 +41,9 @@ rules:
     verbs:
       - get
       - list
-      - update
       - watch
   - apiGroups:
-      - extensions
-      - "networking.k8s.io" # k8s 1.14+
+      - networking.k8s.io
     resources:
       - ingresses
     verbs:
@@ -52,14 +51,13 @@ rules:
       - list
       - watch
   - apiGroups:
-      - extensions
-      - "networking.k8s.io" # k8s 1.14+
+      - networking.k8s.io
     resources:
       - ingresses/status
     verbs:
       - update
   - apiGroups:
-      - "networking.k8s.io" # k8s 1.14+
+      - networking.k8s.io
     resources:
       - ingressclasses
     verbs:
@@ -71,7 +69,7 @@ rules:
     resources:
       - configmaps
     resourceNames:
-      - ingress-controller-leader-nginx
+      - ingress-controller-leader
     verbs:
       - get
       - update
@@ -81,14 +79,6 @@ rules:
       - configmaps
     verbs:
       - create
-  - apiGroups:
-      - ""
-    resources:
-      - endpoints
-    verbs:
-      - create
-      - get
-      - update
   - apiGroups:
       - ""
     resources:

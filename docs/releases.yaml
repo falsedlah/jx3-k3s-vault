@@ -110,19 +110,24 @@
   releases:
   - annotations:
       artifacthub.io/changes: |
-        - Remove helm2 support and update docs
+        - "#8253 Add a certificate info metric"
+        - "#8225 fix inconsistent-label-cardinality for prometheus metrics: nginx_ingress_controller_requests"
+        - "#8162 Versioned static manifests"
+        - "#8159 Adding some geoip variables and default values"
+        - "#8221 Do not validate ingresses with unknown ingress class in admission webhook endpoint"
+      artifacthub.io/prerelease: "false"
     apiVersion: v2
-    appVersion: 0.41.2
+    appVersion: 1.1.2
     description: Ingress controller for Kubernetes using NGINX as a reverse proxy
       and load balancer
-    firstDeployed: "2022-03-16T22:05:47Z"
+    firstDeployed: "2022-03-16T23:01:45Z"
     home: https://github.com/kubernetes/ingress-nginx
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
     keywords:
     - ingress
     - nginx
-    kubeVersion: '>=1.16.0-0'
-    lastDeployed: "2022-03-16T22:05:47Z"
+    kubeVersion: '>=1.19.0-0'
+    lastDeployed: "2022-03-16T23:01:45Z"
     maintainers:
     - name: ChiefAlexander
     name: ingress-nginx
@@ -132,7 +137,7 @@
     sources:
     - https://github.com/kubernetes/ingress-nginx
     type: application
-    version: 3.12.0
+    version: 4.0.18
 - namespace: tekton-pipelines
   path: helmfiles/tekton-pipelines/helmfile.yaml
   releases:

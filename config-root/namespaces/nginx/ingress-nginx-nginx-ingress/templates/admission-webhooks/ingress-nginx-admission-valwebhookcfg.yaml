@@ -5,10 +5,11 @@ apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
 metadata:
   labels:
-    helm.sh/chart: ingress-nginx-3.12.0
+    helm.sh/chart: ingress-nginx-4.0.18
     app.kubernetes.io/name: ingress-nginx
     app.kubernetes.io/instance: nginx-ingress
-    app.kubernetes.io/version: "0.41.2"
+    app.kubernetes.io/version: "1.1.2"
+    app.kubernetes.io/part-of: ingress-nginx
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: admission-webhook
     gitops.jenkins-x.io/pipeline: 'namespaces'
@@ -24,7 +25,7 @@ webhooks:
       - apiGroups:
           - networking.k8s.io
         apiVersions:
-          - v1beta1
+          - v1
         operations:
           - CREATE
           - UPDATE
@@ -34,9 +35,8 @@ webhooks:
     sideEffects: None
     admissionReviewVersions:
       - v1
-      - v1beta1
     clientConfig:
       service:
-        namespace: nginx
+        namespace: "nginx"
         name: ingress-nginx-controller-admission
-        path: /networking/v1beta1/ingresses
+        path: /networking/v1/ingresses

@@ -9,10 +9,11 @@ metadata:
     meta.helm.sh/release-name: 'nginx-ingress'
     kapp.k14s.io/change-group: 'apps.jenkins-x.io/ingress-nginx'
   labels:
-    helm.sh/chart: ingress-nginx-3.12.0
+    helm.sh/chart: ingress-nginx-4.0.18
     app.kubernetes.io/name: ingress-nginx
     app.kubernetes.io/instance: nginx-ingress
-    app.kubernetes.io/version: "0.41.2"
+    app.kubernetes.io/version: "1.1.2"
+    app.kubernetes.io/part-of: ingress-nginx
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: admission-webhook
     gitops.jenkins-x.io/pipeline: 'cluster'
@@ -23,4 +24,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: ingress-nginx-admission
-    namespace: nginx
+    namespace: "nginx"

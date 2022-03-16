@@ -3,19 +3,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    helm.sh/chart: ingress-nginx-3.12.0
+    helm.sh/chart: ingress-nginx-4.0.18
     app.kubernetes.io/name: ingress-nginx
     app.kubernetes.io/instance: nginx-ingress
-    app.kubernetes.io/version: "0.41.2"
+    app.kubernetes.io/version: "1.1.2"
+    app.kubernetes.io/part-of: ingress-nginx
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: controller
     gitops.jenkins-x.io/pipeline: 'namespaces'
   name: ingress-nginx-controller
+  namespace: nginx
   annotations:
     meta.helm.sh/release-name: 'nginx-ingress'
     kapp.k14s.io/change-group: 'apps.jenkins-x.io/ingress-nginx'
     wave.pusher.com/update-on-config-change: 'true'
-  namespace: nginx
 spec:
   selector:
     matchLabels:
@@ -35,7 +36,7 @@ spec:
       dnsPolicy: ClusterFirst
       containers:
         - name: controller
-          image: "k8s.gcr.io/ingress-nginx/controller:v0.41.2@sha256:1f4f402b9c14f3ae92b11ada1dfe9893a88f0faeb0b2f4b903e2c67a0c3bf0de"
+          image: "k8s.gcr.io/ingress-nginx/controller:v1.1.2@sha256:28b11ce69e57843de44e3db6413e98d09de0f6688e33d4bd384002a44f78405c"
           imagePullPolicy: IfNotPresent
           lifecycle:
             preStop:
@@ -46,6 +47,7 @@ spec:
             - /nginx-ingress-controller
             - --publish-service=$(POD_NAMESPACE)/ingress-nginx-controller
             - --election-id=ingress-controller-leader
+            - --controller-class=k8s.io/ingress-nginx
             - --ingress-class=nginx
             - --configmap=$(POD_NAMESPACE)/ingress-nginx-controller
             - --validating-webhook=:8443
@@ -72,25 +74,25 @@ spec:
             - name: LD_PRELOAD
               value: /usr/local/lib/libmimalloc.so
           livenessProbe:
-            httpGet:
-              path: /healthz
-              port: 10254
-              scheme: HTTP
-            initialDelaySeconds: 10
-            periodSeconds: 10
-            timeoutSeconds: 1
-            successThreshold: 1
             failureThreshold: 5
-          readinessProbe:
             httpGet:
               path: /healthz
               port: 10254
               scheme: HTTP
             initialDelaySeconds: 10
             periodSeconds: 10
-            timeoutSeconds: 1
             successThreshold: 1
+            timeoutSeconds: 1
+          readinessProbe:
             failureThreshold: 3
+            httpGet:
+              path: /healthz
+              port: 10254
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
           ports:
             - name: http
               containerPort: 80

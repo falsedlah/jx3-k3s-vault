@@ -1,6 +1,8 @@
-# Source: ingress-nginx/templates/controller-serviceaccount.yaml
-apiVersion: v1
-kind: ServiceAccount
+# Source: ingress-nginx/templates/controller-ingressclass.yaml
+# We don't support namespaced ingressClass yet
+# So a ClusterRole and a ClusterRoleBinding is required
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
 metadata:
   labels:
     helm.sh/chart: ingress-nginx-4.0.18
@@ -11,9 +13,10 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: controller
     gitops.jenkins-x.io/pipeline: 'namespaces'
-  name: ingress-nginx
-  namespace: nginx
+  name: nginx
   annotations:
     meta.helm.sh/release-name: 'nginx-ingress'
     kapp.k14s.io/change-group: 'apps.jenkins-x.io/ingress-nginx'
-automountServiceAccountToken: true
+  namespace: nginx
+spec:
+  controller: k8s.io/ingress-nginx

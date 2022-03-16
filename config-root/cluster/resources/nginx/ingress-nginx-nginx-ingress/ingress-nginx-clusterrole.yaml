@@ -3,10 +3,11 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   labels:
-    helm.sh/chart: ingress-nginx-3.12.0
+    helm.sh/chart: ingress-nginx-4.0.18
     app.kubernetes.io/name: ingress-nginx
     app.kubernetes.io/instance: nginx-ingress
-    app.kubernetes.io/version: "0.41.2"
+    app.kubernetes.io/version: "1.1.2"
+    app.kubernetes.io/part-of: ingress-nginx
     app.kubernetes.io/managed-by: Helm
     gitops.jenkins-x.io/pipeline: 'cluster'
   name: ingress-nginx
@@ -22,6 +23,7 @@ rules:
       - nodes
       - pods
       - secrets
+      - namespaces
     verbs:
       - list
       - watch
@@ -38,11 +40,9 @@ rules:
     verbs:
       - get
       - list
-      - update
       - watch
   - apiGroups:
-      - extensions
-      - "networking.k8s.io" # k8s 1.14+
+      - networking.k8s.io
     resources:
       - ingresses
     verbs:
@@ -57,14 +57,13 @@ rules:
       - create
       - patch
   - apiGroups:
-      - extensions
-      - "networking.k8s.io" # k8s 1.14+
+      - networking.k8s.io
     resources:
       - ingresses/status
     verbs:
       - update
   - apiGroups:
-      - "networking.k8s.io" # k8s 1.14+
+      - networking.k8s.io
     resources:
       - ingressclasses
     verbs:
