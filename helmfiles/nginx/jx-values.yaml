@@ -30,7 +30,7 @@ jxRequirements:
     gitKind: github
     gitName: github
     gitServer: https://github.com
-    provider: kubernetes
+    provider: kind
     registry: ghcr.io
   environments:
   - key: dev
