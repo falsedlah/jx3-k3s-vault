@@ -21,7 +21,8 @@ jxRequirements:
     enabled: false
     schedule: ""
   cluster:
-    chartRepository: http://bucketrepo.jx.svc.cluster.local/bucketrepo/charts
+    chartKind: pages
+    chartRepository: https://github.com/jenkins-x-bdd/repo.git
     clusterName: kind
     devEnvApprovers:
     - todo
@@ -33,19 +34,24 @@ jxRequirements:
     registry: ghcr.io
   environments:
   - key: dev
+    owner: falsedlah
+    repository: jx3-k3s-vault
   - key: staging
-  - key: production
   ingress:
-    domain: change.me
+    domain: k8s.alkhaleefi.com
+    ignoreLoadBalancer: true
     kind: ingress
-    namespaceSubDomain: -nginx.
+    namespaceSubDomain: .nginx.
     tls:
       email: ""
       enabled: false
       production: false
+  pipelineUser:
+    username: falsedlah
   repository: bucketrepo
-  secretStorage: local
-  vault: {}
+  secretStorage: vault
+  vault:
+    url: http://vault.alkhaleefi.com:8200
   webhook: lighthouse
 jxRequirementsIngressExternalDNS:
   enabled: false
@@ -56,4 +62,4 @@ jxRequirementsKuberhealthy:
 jxRequirementsTLSCheck:
   enabled: false
 jxRequirementsVault:
-  enabled: false
+  enabled: true
