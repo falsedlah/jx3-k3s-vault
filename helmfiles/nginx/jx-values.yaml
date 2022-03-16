@@ -21,8 +21,7 @@ jxRequirements:
     enabled: false
     schedule: ""
   cluster:
-    chartKind: pages
-    chartRepository: https://github.com/jenkins-x-bdd/repo.git
+    chartRepository: http://bucketrepo.jx.svc.cluster.local/bucketrepo/charts
     clusterName: kind
     devEnvApprovers:
     - todo
@@ -35,11 +34,11 @@ jxRequirements:
   environments:
   - key: dev
   - key: staging
+  - key: production
   ingress:
     domain: change.me
-    ignoreLoadBalancer: true
     kind: ingress
-    namespaceSubDomain: .nginx.
+    namespaceSubDomain: -nginx.
     tls:
       email: ""
       enabled: false

@@ -20,7 +20,7 @@ spec:
   - key: dev
   - key: staging
   ingress:
-    domain: ""
+    domain: "k8s.alkhaleefi.com"
     externalDNS: false
     ignoreLoadBalancer: true
     kind: ingress
