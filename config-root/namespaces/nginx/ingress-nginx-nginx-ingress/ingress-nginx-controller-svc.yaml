@@ -16,7 +16,7 @@ metadata:
     kapp.k14s.io/change-group: 'apps.jenkins-x.io/ingress-nginx'
   namespace: nginx
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
     - name: http
       port: 80
