@@ -28,7 +28,7 @@ spec:
     dockerRegistryOrg: ""
     envOrganisation: todo
     gitServer: https://github.com
-    kubeProvider: "kubernetes"
+    kubeProvider: "kind"
     pipelineUsername: "falsedlah"
     pipelineUserEmail: "jenkins-x@googlegroups.com"
     prowConfig: Scheduler
