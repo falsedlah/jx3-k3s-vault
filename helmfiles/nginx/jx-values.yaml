@@ -41,6 +41,10 @@ jxRequirements:
     domain: k8s.alkhaleefi.com
     ignoreLoadBalancer: true
     kind: ingress
+    annotations:
+        nginx.ingress.kubernetes.io/auth-secret: ~
+        nginx.ingress.kubernetes.io/auth-type: ~
+         
     namespaceSubDomain: .nginx.
     tls:
       email: ""
