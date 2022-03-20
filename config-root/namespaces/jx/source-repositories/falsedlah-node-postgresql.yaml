@@ -1,0 +1,22 @@
+apiVersion: jenkins.io/v1
+kind: SourceRepository
+metadata:
+  creationTimestamp: null
+  labels:
+    owner: falsedlah
+    provider: github
+    repository: node-postgresql
+    gitops.jenkins-x.io/pipeline: 'namespaces'
+  name: falsedlah-node-postgresql
+  namespace: jx
+spec:
+  httpCloneURL: https://github.com/falsedlah/node-postgresql.git
+  org: falsedlah
+  provider: https://github.com
+  providerKind: github
+  providerName: github
+  repo: node-postgresql
+  scheduler:
+    kind: ""
+    name: in-repo
+  url: https://github.com/falsedlah/node-postgresql
