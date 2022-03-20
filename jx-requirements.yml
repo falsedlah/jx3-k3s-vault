@@ -15,7 +15,7 @@ spec:
     gitName: github
     gitServer: https://github.com
     provider: kind
-    registry: ghcr.io
+    registry: hub.docker.com
   environments:
   - key: dev
     owner: falsedlah
@@ -33,7 +33,6 @@ spec:
   pipelineUser:
     username: falsedlah
   repository: bucketrepo
-  registry: hub.docker.com
   secretStorage: vault
   vault:
     url: http://vault.alkhaleefi.com:8200
