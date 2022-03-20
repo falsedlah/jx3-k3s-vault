@@ -15,7 +15,7 @@ spec:
     gitName: github
     gitServer: https://github.com
     provider: kind
-    registry: hub.docker.com
+    registry: docker.com
   environments:
   - key: dev
     owner: falsedlah
