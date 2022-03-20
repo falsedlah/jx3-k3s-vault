@@ -9,6 +9,7 @@ data:
       enabled:
         falsedlah/jx3-k3s-vault: true
         falsedlah/node-postgresql: true
+        falsedlah/spring-boot-gradle: true
     plank: {}
     pod_namespace: jx
     prowjob_namespace: jx
@@ -22,6 +23,7 @@ data:
       merge_method:
         falsedlah/jx3-k3s-vault: merge
         falsedlah/node-postgresql: merge
+        falsedlah/spring-boot-gradle: merge
       queries:
       - labels:
         - approved
@@ -34,6 +36,7 @@ data:
         repos:
         - falsedlah/jx3-k3s-vault
         - falsedlah/node-postgresql
+        - falsedlah/spring-boot-gradle
       - labels:
         - updatebot
         missingLabels:
@@ -45,6 +48,7 @@ data:
         repos:
         - falsedlah/jx3-k3s-vault
         - falsedlah/node-postgresql
+        - falsedlah/spring-boot-gradle
       target_url: http://lighthouse-jx.alkhaleefi.com/merge/status
 kind: ConfigMap
 metadata:
