@@ -33,6 +33,7 @@ spec:
   pipelineUser:
     username: falsedlah
   repository: bucketrepo
+  registry: hub.docker.com
   secretStorage: vault
   vault:
     url: http://vault.alkhaleefi.com:8200
