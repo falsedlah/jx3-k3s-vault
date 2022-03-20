@@ -1,0 +1,22 @@
+apiVersion: jenkins.io/v1
+kind: SourceRepository
+metadata:
+  creationTimestamp: null
+  labels:
+    owner: falsedlah
+    provider: github
+    repository: spring-boot-gradle
+    gitops.jenkins-x.io/pipeline: 'namespaces'
+  name: falsedlah-spring-boot-gradle
+  namespace: jx
+spec:
+  httpCloneURL: https://github.com/falsedlah/spring-boot-gradle.git
+  org: falsedlah
+  provider: https://github.com
+  providerKind: github
+  providerName: github
+  repo: spring-boot-gradle
+  scheduler:
+    kind: ""
+    name: in-repo
+  url: https://github.com/falsedlah/spring-boot-gradle
