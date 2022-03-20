@@ -20,4 +20,4 @@ spec:
                 port:
                   number: 80
             path: "/hook"
-      host: hook.jx.k8s.alkhaleefi.com
+      host: hook-jx.alkhaleefi.com

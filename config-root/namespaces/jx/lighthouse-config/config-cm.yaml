@@ -41,7 +41,7 @@ data:
         - needs-rebase
         repos:
         - falsedlah/jx3-k3s-vault
-      target_url: http://lighthouse.jx.k8s.alkhaleefi.com/merge/status
+      target_url: http://lighthouse-jx.alkhaleefi.com/merge/status
 kind: ConfigMap
 metadata:
   creationTimestamp: null

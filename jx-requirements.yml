@@ -25,6 +25,7 @@ spec:
     domain: alkhaleefi.com
     ignoreLoadBalancer: true
     kind: ingress
+    namespaceSubDomain: -jx.
     tls:
       email: ""
       enabled: false

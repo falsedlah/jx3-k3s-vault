@@ -41,6 +41,7 @@ jxRequirements:
     domain: alkhaleefi.com
     ignoreLoadBalancer: true
     kind: ingress
+    namespaceSubDomain: -nginx.
     tls:
       email: ""
       enabled: false

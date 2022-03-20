@@ -16,7 +16,7 @@ metadata:
   namespace: jx
 spec:
   rules:
-    - host: dashboard.jx.k8s.alkhaleefi.com
+    - host: dashboard-jx.alkhaleefi.com
       http:
         paths:
           - pathType: ImplementationSpecific
