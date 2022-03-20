@@ -31,7 +31,7 @@ jxRequirements:
     gitName: github
     gitServer: https://github.com
     provider: kind
-    registry: ghcr.io
+    registry: hub.docker.com
   environments:
   - key: dev
     owner: falsedlah
